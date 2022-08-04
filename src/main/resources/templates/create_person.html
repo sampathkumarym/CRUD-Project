@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Person Management</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+	<a class="navbar-brand" th:href="@{/persons}">Home</a>
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Person Management</a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/persons}">Person
+						Management</a></li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<br>
+
+	<div class="container">
+		<div class="row">
+			<div
+				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Add New Person</h1>
+				<div class="card-body">
+					<form th:action="@{/persons}" th:object="${person}" method="POST">
+						<div class="form-group">
+							<label>Name</label> <input type="text" name="name"
+								th:field="*{name}" class="form-control" placeholder="Enter Name" required minlength="3" />
+						</div>
+
+						<div class="form-group">
+							<label>Card Number</label> <input type="number" name="cardNumber"
+								th:field="*{cardNumber}" class="form-control"
+								placeholder="Enter Card Number" required />
+						</div>
+
+						<div class="form-group">
+							<label>Date</label> <input type="date" name="date"
+								th:field="*{date}" class="form-control" required/>
+						</div>
+
+						<div class="form-group">
+							<label>Status <select th:field="*{status}">
+									<option th:value="${true}" style="color:Green">Activated</option>
+									<option th:value="${false}" style="color:Red">De-Activated</option>
+							</select>
+							</label>
+						</div>
+
+						<br> <br>
+
+						<div class="box-footer">
+								<button type="submit" class="btn btn-primary" >Submit</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>
